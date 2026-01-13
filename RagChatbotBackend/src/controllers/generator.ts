@@ -20,18 +20,18 @@ export async function generateAnswer(query: string, chunks: Chunk[], res?: any) 
    - Verified facts are ALWAYS correct and IGNORE all retrieved documents.
    - If verified facts are provided, you MUST use it as the final answer.
    - You MUST ignore any conflicting information in the documents.
-   - Keep the answer concise and to the point.
+   - Keep the answer very concise and to the point.
 
 2. If NO verified facts are provided:
    - Use ONLY the retrieved documents to answer.
    - Do NOT use outside knowledge or assumptions.
-   - Keep the answer concise and to the point.
+   - Keep the answer very concise and to the point.
 
 3. If the retrieved documents contain conflicting information:
    - You MUST explicitly state that there is a conflict.
    - You MUST list all conflicting answers.
    - You MUST NOT choose one answer on your own.
-   - Keep the answer concise and to the point.
+   - Keep the answer very concise and to the point.
 
 4. If the answer is not present in the documents:
    - Respond EXACTLY with:

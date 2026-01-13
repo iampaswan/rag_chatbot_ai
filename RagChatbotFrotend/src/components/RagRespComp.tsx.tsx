@@ -148,7 +148,7 @@ export const RagRespComp: React.FC = () => {
 
 
   return <>
-    <div className="flex flex-col min-w-[360px] h-[100dvh] p-2 sm:p-4  bg-gradient-to-br from-indigo-100 via-amber-100 to-cyan-100">
+    <div className="flex flex-col min-w-[360px] h-[100dvh] p-1 sm:p-1  bg-gradient-to-br from-indigo-100 via-amber-100 to-cyan-100">
 
       <div className="flex items-center flex-wrap justify-between mb-4 sm:mb-4 p-1  "   >
         <div className="text-xl sm:text-3xl font-bold">RAG Chatbot</div>
@@ -166,7 +166,7 @@ export const RagRespComp: React.FC = () => {
               className={`flex ${msg.sender === "user" ? "justify-end" : "justify-start"}`}
             >
               <div
-                className={`max-w-[75%] p-3 rounded-2xl text-sm whitespace-pre-wrap ${msg.sender === "user"
+                className={`max-w-[80%] p-2 rounded-2xl text-sm whitespace-pre-wrap ${msg.sender === "user"
                   ? "bg-blue-600 text-white rounded-br-none"
                   : "bg-gray-950 text-white rounded-bl-none"
                   }`}
@@ -181,7 +181,7 @@ export const RagRespComp: React.FC = () => {
 
         {loading && (
           <div className="flex justify-start">
-            <div className="bg-gray-950 text-white p-3 rounded-2xl rounded-bl-none animate-pulse">
+            <div className="bg-gray-950 text-white p-2 rounded-2xl rounded-bl-none animate-pulse">
               Please wait...
             </div>
           </div>
@@ -195,7 +195,7 @@ export const RagRespComp: React.FC = () => {
         <input
           type="text"
           placeholder="Type your question..."
-          className="flex-1 p-3 bg-white shadow-md rounded-4xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="flex-1 p-2 bg-white shadow-md rounded-4xl focus:outline-none focus:ring-2 focus:ring-blue-500"
           value={question}
           onChange={(e) => setQuestion(e.target.value)}
           onKeyDown={handleKeyPress}
@@ -207,7 +207,7 @@ export const RagRespComp: React.FC = () => {
         <button
           onClick={handleAsk}
           disabled={loading}
-          className={` pl-5 pr-5 text-white bg-blue-500 rounded-full hover:bg-black ${loading ? "bg-blue-300 cursor-not-allowed" : "bg-blue-600 hover:bg-black"
+          className={` pl-4 pr-5 text-white bg-blue-500 rounded-full hover:bg-black ${loading ? "bg-blue-300 cursor-not-allowed" : "bg-blue-600 hover:bg-black"
             }`}
         >
           <strong>{loading ? "..." : "Send"} </strong>

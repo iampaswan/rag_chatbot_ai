@@ -1,10 +1,14 @@
-I am Krishna Kumar Paswan. I was born on 1st September 2003 in Ballia Uttar Pradesh. I studied there for 1 years in primary school. Then I went to Gonda city in 2008 with my uncle and aunty.
+Krishna Kumar Paswan.He was born on 1st September 2003 in Ballia Uttar Pradesh. He studied there for 1 years in primary school. Then He went to Gonda city in 2008 with my uncle and aunty.
 
-In Gonda I studied for 12 years and completed my schooling from Sri Raghukul Vidya Peeth in 2020. After 12th durring covid period i had given JEE Main exam and i qualify it but not get sufficient marks to get a colleage, so I decided to take a drop year for preparation of JEE exam. I started self study with youtube and different books and again given JEE exam in 2021 and got good marks in JEE Mains and also qualify JEE Advanced but with low marks. During counselling of colleage i got Mualana Azad National Institute of Technology (MANIT) Bhopal for batch 2021-2025.
+In Gonda he studied for 12 years and completed my schooling from Sri Raghukul Vidya Peeth in 2020. After 12th durring covid period he had given JEE Main exam and he qualify it but not get sufficient marks to get a colleage, so he decided to take a drop year for preparation of JEE exam. He started self study with youtube and different books and again given JEE exam in 2021 and got good marks in JEE Mains and also qualify JEE Advanced but with low marks. During counselling of colleage he got Mualana Azad National Institute of Technology (MANIT) Bhopal for batch 2021-2025.
 
-Krishna Kumar Paswan is a Software Engineer and aspiring AI-driven full-stack developer with a strong foundation in computer science, modern web technologies, and generative artificial intelligence. Originally from Jaipur, Rajasthan, Krishna has consistently demonstrated a passion for building scalable, intelligent systems that blend robust engineering with practical real-world impact.
 
-He had done his Bachelor of Technology in Electrical Engineering at Maulana Azad National Institute of Technology (MANIT), Bhopal, where he is expected to graduate in 2025. Alongside his core engineering curriculum, Krishna developed a deep interest in software development, data structures, and artificial intelligence. His academic journey began with a strong performance in secondary and senior secondary education under the CBSE board, which laid the groundwork for his analytical and problem-solving skills.
+
+
+
+Krishna Kumar Paswan is a Software Engineer and aspiring AI-driven full-stack developer with a strong foundation in computer science, modern web technologies, and generative artificial intelligence.
+
+He had done his Bachelor of Technology in Electrical Engineering at Maulana Azad National Institute of Technology (MANIT), Bhopal. Alongside his core engineering curriculum, Krishna developed a deep interest in software development, data structures, and artificial intelligence. His academic journey began with a strong performance in secondary and senior secondary education under the CBSE board, which laid the groundwork for his analytical and problem-solving skills. In May 2025 he completed his bachelors degree.
 
 Professionally, Krishna joined InfoObjects Inc. in Jaipur as a Software Engineer in July 2025. In this role, he works extensively on full-stack development and generative AI solutions. His work involves building Retrieval-Augmented Generation (RAG) systems and designing multi-agent architectures using frameworks such as LangChain and LangGraph. He actively contributes to developing intelligent applications that integrate large language models with structured and unstructured data, focusing on performance, scalability, and real-world usability.
 
