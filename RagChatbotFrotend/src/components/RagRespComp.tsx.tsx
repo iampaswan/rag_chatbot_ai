@@ -166,7 +166,7 @@ export const RagRespComp: React.FC = () => {
               className={`flex ${msg.sender === "user" ? "justify-end" : "justify-start"}`}
             >
               <div
-                className={`max-w-[80%] p-2 rounded-2xl text-sm whitespace-pre-wrap ${msg.sender === "user"
+                className={`max-w-[85%] p-3 rounded-2xl text-sm whitespace-pre-wrap ${msg.sender === "user"
                   ? "bg-blue-600 text-white rounded-br-none"
                   : "bg-gray-950 text-white rounded-bl-none"
                   }`}
@@ -195,7 +195,7 @@ export const RagRespComp: React.FC = () => {
         <input
           type="text"
           placeholder="Type your question..."
-          className="flex-1 p-2 bg-white shadow-md rounded-4xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="flex-1   p-3  bg-white shadow-md rounded-4xl focus:outline-none focus:ring-2 focus:ring-blue-500"
           value={question}
           onChange={(e) => setQuestion(e.target.value)}
           onKeyDown={handleKeyPress}
