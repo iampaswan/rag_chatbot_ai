@@ -166,7 +166,7 @@ export const RagRespComp: React.FC = () => {
               className={`flex ${msg.sender === "user" ? "justify-end" : "justify-start"}`}
             >
               <div
-                className={`max-w-[55%] p-3 rounded-2xl text-sm whitespace-pre-wrap ${msg.sender === "user"
+                className={`max-w-[75%] p-3 rounded-2xl text-sm whitespace-pre-wrap ${msg.sender === "user"
                   ? "bg-blue-600 text-white rounded-br-none"
                   : "bg-gray-950 text-white rounded-bl-none"
                   }`}
