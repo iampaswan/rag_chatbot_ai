@@ -5,10 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "lint": "eslint .",
+    "build": "vite build",
     "preview": "vite preview --host",
-    "build": "react-scripts build",
-    "start": "serve -s build"
+    "start": "serve -s dist"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.13",
