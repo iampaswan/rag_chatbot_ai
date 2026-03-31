@@ -18,6 +18,10 @@ connectDB()
 
 app.use('/', resultRoute)
 
+app.get("/", (req, res) => {
+  res.send("RAG Backend is running ");
+});
+
 app.listen(port, () => {
   console.log(`app listening on port ${port}`)
 })
