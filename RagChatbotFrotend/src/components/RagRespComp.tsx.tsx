@@ -4,12 +4,7 @@ import { getChats } from "../apiconfig/api";
 import './scrollbar.css'
 import FilesUploading from "./FileUploading";
 
-
 const baseUrl = import.meta.env.VITE_API_URL;
-console.log("Base URL:", baseUrl);
-
-
-
 
 export const RagRespComp: React.FC = () => {
 
@@ -30,7 +25,7 @@ export const RagRespComp: React.FC = () => {
     try {
       const resp = await getChats();
       const chats = resp.data.chats || [];
-      console.log('history', chats)
+      // console.log('history', chats)
 
       const formatted = chats.flatMap((x: any) => [
         { sender: 'user', text: x.question },
@@ -49,13 +44,8 @@ export const RagRespComp: React.FC = () => {
   }, [])
 
 
-
-
-
   const handleAsk = async () => {
     if (!question.trim()) return;
-
-    console.log("Question asked:", question);
 
     const newMessage = { sender: "user" as const, text: question };
     setMessages((prev) => [...prev, newMessage]);
@@ -76,8 +66,6 @@ export const RagRespComp: React.FC = () => {
 
       });
 
-      console.log("Fetch initiated for streaming response.", response);
-      console.log("Fetch initiated for streaming response.", response.body);
 
       if (!response.body) {
         throw new Error("ReadableStream not supported or empty response body.");
@@ -86,11 +74,16 @@ export const RagRespComp: React.FC = () => {
       setIsStreaming(true);
 
       const reader = await response.body.getReader();
-      console.log("Reader obtained --:", reader);
       const decoder = new TextDecoder("utf-8");
 
 
       const sleep = (ms: number) => new Promise(res => setTimeout(res, ms));
+
+      const punctuationDelay = (char: string) => {
+        if (".!?".includes(char)) return 120;
+        if (",".includes(char)) return 60;
+        return 15;
+      };
 
       while (true) {
         const { done, value } = await reader.read();
@@ -98,13 +91,9 @@ export const RagRespComp: React.FC = () => {
 
         const chunk = decoder.decode(value, { stream: true });
 
-        console.log("Received chunk:", chunk);
-
-        // 👉 Split into words (or characters)
-        const words = chunk.split(" ");
-
-        for (const word of words) {
-          await sleep(30); // 🔥 control speed (20–50ms best)
+        for (const char of chunk) {
+          const delay = punctuationDelay(char);
+          await sleep(delay);
 
           setMessages((prev) => {
             if (prev.length === 0) return prev;
@@ -114,7 +103,7 @@ export const RagRespComp: React.FC = () => {
 
             updated[lastIndex] = {
               ...updated[lastIndex],
-              text: updated[lastIndex].text + word + " ",
+              text: updated[lastIndex].text + char,
             };
 
             return updated;
@@ -127,24 +116,30 @@ export const RagRespComp: React.FC = () => {
       //   if (done) break;
 
       //   const chunk = decoder.decode(value, { stream: true });
-      //   console.log("Received chunk:-- ", chunk);
 
-      //   setMessages((prev) => {
-      //     if (prev.length === 0) return prev;
+      //   console.log("Received chunk:", chunk);
 
-      //     const updated = [...prev];
-      //     const lastIndex = updated.length - 1;
+      //   const words = chunk.split(" ");
 
-      //     return [
-      //       ...updated.slice(0, lastIndex),
-      //       {
+      //   for (const word of words) {
+      //     await sleep(45);
+
+      //     setMessages((prev) => {
+      //       if (prev.length === 0) return prev;
+
+      //       const updated = [...prev];
+      //       const lastIndex = updated.length - 1;
+
+      //       updated[lastIndex] = {
       //         ...updated[lastIndex],
-      //         text: updated[lastIndex].text + chunk,
-      //       },
-      //     ];
-      //   });
-      //   setIsStreaming(false);
+      //         text: updated[lastIndex].text + word + " ",
+      //       };
+
+      //       return updated;
+      //     });
+      //   }
       // }
+
 
 
 
