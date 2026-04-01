@@ -71,9 +71,9 @@ export async function main(req: Request, res: Response) {
       console.log(`${idx + 1}. ${c.id}: ${c.text.substring(0, 100)}...`);
     });
 
-    res.setHeader("Content-Type", "text/plain; charset=utf-8");
-    res.setHeader("Transfer-Encoding", "chunked");
+    res.setHeader("Content-Type", "text/event-stream");
     res.setHeader("Cache-Control", "no-cache");
+    res.setHeader("Connection", "keep-alive");
     res.flushHeaders?.();
 
     console.log("\nGenerating answer -->");

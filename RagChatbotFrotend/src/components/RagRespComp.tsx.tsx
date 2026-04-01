@@ -48,6 +48,10 @@ export const RagRespComp: React.FC = () => {
     fetchChatHistory()
   }, [])
 
+
+
+
+
   const handleAsk = async () => {
     if (!question.trim()) return;
 
@@ -92,17 +96,31 @@ export const RagRespComp: React.FC = () => {
         const chunk = decoder.decode(value, { stream: true });
         console.log("Received chunk:-- ", chunk);
 
+        // setMessages((prev) => {
+        //   const updated = [...prev];
+        //   const lastIndex = updated.length - 1;
+        //   const lastMsg = updated[lastIndex];
+
+        //   updated[lastIndex] = {
+        //     ...lastMsg,
+        //     text: lastMsg.text + chunk
+        //   };
+
+        //   return updated;
+        // });
         setMessages((prev) => {
+          if (prev.length === 0) return prev;
+
           const updated = [...prev];
           const lastIndex = updated.length - 1;
-          const lastMsg = updated[lastIndex];
 
-          updated[lastIndex] = {
-            ...lastMsg,
-            text: lastMsg.text + chunk
-          };
-
-          return updated;
+          return [
+            ...updated.slice(0, lastIndex),
+            {
+              ...updated[lastIndex],
+              text: updated[lastIndex].text + chunk,
+            },
+          ];
         });
         setIsStreaming(false);
       }

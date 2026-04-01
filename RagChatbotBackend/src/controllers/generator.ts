@@ -69,8 +69,10 @@ ${query}
     let fullText = '';
 
     for await (const chunk of stream) {
+        await new Promise(r => setTimeout(r, 30));
         const textPart = chunk.choices?.[0]?.delta?.content ?? '';
         res.write(textPart)
+        res.flush?.()
         console.log("\nstreaming chunks --> ", textPart);
         fullText += textPart;
     }

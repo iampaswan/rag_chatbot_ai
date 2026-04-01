@@ -13,7 +13,6 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
-    "typescript": "^5.9.2",
     "@google/genai": "^1.19.0",
     "@huggingface/inference": "^4.13.5",
     "@huggingface/transformers": "^3.8.1",
@@ -21,6 +20,7 @@
     "@types/express": "^5.0.3",
     "@types/multer": "^2.0.0",
     "@types/node": "^24.3.1",
+    "compression": "^1.8.1",
     "cores": "^0.8.5",
     "cors": "^2.8.5",
     "dotenv": "^17.2.2",
@@ -29,6 +29,7 @@
     "multer": "^2.0.2",
     "nodemon": "^3.1.10",
     "openai": "^6.13.0",
-    "ts-node": "^10.9.2"
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2"
   }
 }
