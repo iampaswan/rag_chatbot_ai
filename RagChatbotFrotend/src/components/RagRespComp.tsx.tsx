@@ -89,41 +89,62 @@ export const RagRespComp: React.FC = () => {
       console.log("Reader obtained --:", reader);
       const decoder = new TextDecoder("utf-8");
 
+
+      const sleep = (ms: number) => new Promise(res => setTimeout(res, ms));
+
       while (true) {
         const { done, value } = await reader.read();
         if (done) break;
 
         const chunk = decoder.decode(value, { stream: true });
-        console.log("Received chunk:-- ", chunk);
 
-        // setMessages((prev) => {
-        //   const updated = [...prev];
-        //   const lastIndex = updated.length - 1;
-        //   const lastMsg = updated[lastIndex];
+        console.log("Received chunk:", chunk);
 
-        //   updated[lastIndex] = {
-        //     ...lastMsg,
-        //     text: lastMsg.text + chunk
-        //   };
+        // 👉 Split into words (or characters)
+        const words = chunk.split(" ");
 
-        //   return updated;
-        // });
-        setMessages((prev) => {
-          if (prev.length === 0) return prev;
+        for (const word of words) {
+          await sleep(30); // 🔥 control speed (20–50ms best)
 
-          const updated = [...prev];
-          const lastIndex = updated.length - 1;
+          setMessages((prev) => {
+            if (prev.length === 0) return prev;
 
-          return [
-            ...updated.slice(0, lastIndex),
-            {
+            const updated = [...prev];
+            const lastIndex = updated.length - 1;
+
+            updated[lastIndex] = {
               ...updated[lastIndex],
-              text: updated[lastIndex].text + chunk,
-            },
-          ];
-        });
-        setIsStreaming(false);
+              text: updated[lastIndex].text + word + " ",
+            };
+
+            return updated;
+          });
+        }
       }
+
+      // while (true) {
+      //   const { done, value } = await reader.read();
+      //   if (done) break;
+
+      //   const chunk = decoder.decode(value, { stream: true });
+      //   console.log("Received chunk:-- ", chunk);
+
+      //   setMessages((prev) => {
+      //     if (prev.length === 0) return prev;
+
+      //     const updated = [...prev];
+      //     const lastIndex = updated.length - 1;
+
+      //     return [
+      //       ...updated.slice(0, lastIndex),
+      //       {
+      //         ...updated[lastIndex],
+      //         text: updated[lastIndex].text + chunk,
+      //       },
+      //     ];
+      //   });
+      //   setIsStreaming(false);
+      // }
 
 
 
