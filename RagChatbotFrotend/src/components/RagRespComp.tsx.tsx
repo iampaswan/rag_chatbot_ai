@@ -18,14 +18,13 @@ export const RagRespComp: React.FC = () => {
 
 
   const chatEndRef = useRef<HTMLDivElement>(null);
-  const isFirstLoad = useRef(true)
+  const isFirstLoad = useRef(false)
 
 
   const fetchChatHistory = async () => {
     try {
       const resp = await getChats();
       const chats = resp.data.chats || [];
-      // console.log('history', chats)
 
       const formatted = chats.flatMap((x: any) => [
         { sender: 'user', text: x.question },
@@ -33,6 +32,7 @@ export const RagRespComp: React.FC = () => {
       ])
 
       setMessages(formatted)
+      isFirstLoad.current = true;
 
     } catch (err) {
       console.log("error in fetching chats", err)
@@ -164,17 +164,18 @@ export const RagRespComp: React.FC = () => {
 
 
   useLayoutEffect(() => {
+    if (!chatEndRef.current) return;
 
-    if (!chatEndRef.current || messages.length === 0) return
+    requestAnimationFrame(() => {
+      chatEndRef.current?.scrollIntoView({
+        behavior: isFirstLoad.current ? "auto" : "smooth",
+      });
 
-    if (isFirstLoad.current) {
-      chatEndRef.current.scrollIntoView({ behavior: "auto" })
-      isFirstLoad.current = false
-    } else {
-      chatEndRef.current.scrollIntoView({ behavior: 'smooth' })
-    }
-
-  }, [messages, loading]);
+      if (isFirstLoad.current) {
+        isFirstLoad.current = false;
+      }
+    });
+  }, [messages]);
 
 
 
